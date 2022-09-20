@@ -1,4 +1,4 @@
-import { FaUsers,FaClipboardList,FaClipboardCheck } from 'react-icons/fa';
+import { FaUsers,FaClipboardList,FaPercent,FaClipboardCheck } from 'react-icons/fa';
 import * as C from './style';
 
 const MiniCards=()=>{
@@ -20,6 +20,15 @@ const MiniCards=()=>{
                 </div>
                 <div className='icon'>
                     <FaClipboardList />
+                </div>
+            </C.MiniCard>
+            <C.MiniCard>
+                <div className=''>
+                    <h2>54</h2>
+                    <span>Percentage Of Tasks</span>
+                </div>
+                <div className='icon'>
+                    <FaPercent />
                 </div>
             </C.MiniCard>
             <C.MiniCard>

@@ -29,7 +29,7 @@ export const Container=styled.nav`
     }
     .avatar{
         display: flex;
-        gap: .3rem;
+        gap: .5rem;
         .image img{
             border-radius: 50%;
         }

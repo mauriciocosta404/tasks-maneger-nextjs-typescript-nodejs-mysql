@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container=styled.aside`
     position: sticky;
-    top: 0;bottom:0;
     padding: 1rem 0rem 1rem 1rem;
     background-color:#e41386;
     height: 100vh;
     width: 20rem;
     color: #fff;
     .logoP{
+        padding: 1rem;
         display: flex;
         gap:1rem;
         align-items: center;
@@ -20,7 +20,7 @@ export const Container=styled.aside`
         }
     }
     .menu{
-        margin-top: 2rem;
+        margin-top: 3rem;
     }
     .menu >div{
         padding: 1rem;
@@ -30,13 +30,23 @@ export const Container=styled.aside`
         font-size: 1.2rem;
         margin: .6rem 0;
         cursor: pointer;
+
+        a{
+            color: #fff;
+        }
     }
     .menu >div:hover{
         background-color: #fff;
         color: #e41386;
+        a{
+            color: #e41386;
+        }
     }
     .menu div:first-child{
         background-color: #fff;
         color: #e41386;
+        a{
+            color: #e41386;
+        }
     }
 `;

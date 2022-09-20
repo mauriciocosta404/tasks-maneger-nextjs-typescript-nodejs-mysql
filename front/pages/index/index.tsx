@@ -19,7 +19,6 @@ const Home: NextPage = () => {
       <div className='header'>
         <Header></Header>
         <MiniCards></MiniCards>
-        
       </div>
         
     </C.Container>

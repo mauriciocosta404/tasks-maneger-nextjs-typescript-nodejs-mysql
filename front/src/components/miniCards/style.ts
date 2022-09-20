@@ -1,24 +1,34 @@
 import styled from "styled-components";
 
 export const Container=styled.div`
-    padding: 4rem 6rem;
+    padding: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(8rem,1fr));
     gap: 2rem;
+    >div:not(:last-child){
+        background-color:#fff ;
+        .icon{
+            font-size: 2rem;
+            color:#e41386;
+        }
+    }
+    >div:last-child{
+        background-color:#e41386 ;
+        color: #fff;
+    }
+    .icon{
+        font-size: 2rem; 
+        color:#fff;
+    }
 `;
 
 export const MiniCard = styled.div`
     padding: 2rem ;
-    background-color:#fff ;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:6rem;
+    gap:3rem;
     h2{
-        font-size: 3rem;
-    }
-    .icon{
-        font-size: 2.6rem;
-        color:#e41386;
+        font-size: 1.9rem;
     }
 `;

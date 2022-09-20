@@ -37,7 +37,7 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaCartPlus />
-                    Add Users
+                    <a href="/addUsers">Add Users</a>
                 </div>
             </div>
         </C.Container>
