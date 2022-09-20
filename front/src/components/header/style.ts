@@ -4,7 +4,7 @@ export const Container=styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 2rem;
     background-color: #fff;
     box-shadow: var(--box-shadow);
     max-height: 5rem;
@@ -25,6 +25,23 @@ export const Container=styled.nav`
         input{
             border: none;
             padding: .3rem;
+        }
+    }
+    .avatar{
+        display: flex;
+        gap: .3rem;
+        .image img{
+            border-radius: 50%;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            span{
+                font-weight: 600;
+            }
+            small{
+                color: #999;
+            }
         }
     }
 `;
