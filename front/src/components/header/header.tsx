@@ -3,7 +3,7 @@ import {FaSearch,FaBars} from 'react-icons/fa';
 
 const Header=()=>{
     return(
-        <C.Container>
+        <C.Container className='header'>
             <div className='logo'><FaBars />Dashboard</div>
             <div className='searchContainer'><FaSearch /><input type="search" name="" id="" /></div>
             <div className='avatar'>
