@@ -5,7 +5,7 @@ const Header=()=>{
     return(
         <C.Container className='header'>
             <div className='logo'><FaBars />Dashboard</div>
-            <div className='searchContainer'><FaSearch /><input type="search" name="" id="" /></div>
+            <div className='searchContainer'><FaSearch /><input type="search" placeholder='search here' name="" id="" /></div>
             <div className='avatar'>
                 <div className='image'>
 
