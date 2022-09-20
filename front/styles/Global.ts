@@ -2,17 +2,10 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle=createGlobalStyle`
     :root{
-        --green:#27ae60;
         --black:#192a56;
         --light-color:#666;
         --box-shadow:0 0.5rem 1.5rem rgba(0,0,0,0.1);
         --body-color:#efefef;
-        --nav-green:#16b621;
-        --bg-color:#ffffff;
-        --nav-color:#474747;
-        --search-color:#000000;
-        --button-send-color:#222222;
-
     }
 
     *{
