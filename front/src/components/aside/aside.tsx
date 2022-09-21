@@ -1,6 +1,6 @@
 import * as C from './style';
 import Image from 'next/image';
-import { FaIgloo,FaCartPlus, FaLeaf,FaUsers,FaUserGraduate,FaClipboardList,FaClipboardCheck,FaPercentage } from 'react-icons/fa';
+import { FaIgloo,FaCartPlus, FaRegClipboard,FaLeaf,FaUsers,FaUserGraduate,FaClipboardList,FaClipboardCheck,FaPercentage } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Aside=()=>{
@@ -31,6 +31,10 @@ const Aside=()=>{
                 <div className='menu-item'>
                     <FaClipboardCheck/>
                     Finished Tasks
+                </div>
+                <div className='menu-item'>
+                    <FaRegClipboard/>
+                    Penddning Tasks
                 </div>
                 <div className='menu-item'>
                     <FaPercentage/>

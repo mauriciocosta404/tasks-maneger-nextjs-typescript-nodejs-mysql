@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as C from './style';
+import {FaCheck} from 'react-icons/fa';
 
 const TaskList=()=>{
 
@@ -19,6 +20,7 @@ const TaskList=()=>{
                             <th>Name</th>
                             <th>Description</th>
                             <th>Codigo</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,21 +28,25 @@ const TaskList=()=>{
                             <td>Comer</td>
                             <td>Comer 2 pães com manteiga</td>
                             <td>**********</td>
+                            <td><FaCheck/></td>
                         </tr>
                         <tr>
                             <td>Bazar</td>
                             <td>Bazar na escola com as crianças</td>
                             <td>**********</td>
+                            <td><FaCheck /></td>
                         </tr>
                         <tr>
                             <td>Codar</td>
                             <td>Codar com o José em php</td>
                             <td>**********</td>
+                            <td><FaCheck /></td>
                         </tr>
                         <tr>
                             <td>Dormir</td>
                             <td>Dormir sozinho</td>
                             <td>**********</td>
+                            <td><FaCheck /></td>
                         </tr>
                     </tbody>
                     

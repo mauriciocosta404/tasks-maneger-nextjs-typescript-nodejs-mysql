@@ -26,7 +26,9 @@ export const Container=styled.div`
         td,tr{
             padding: 1rem ;
             text-align: center;
-            
+        }
+        td:last-child{
+            color:#77AA00;
         }
     }
     
