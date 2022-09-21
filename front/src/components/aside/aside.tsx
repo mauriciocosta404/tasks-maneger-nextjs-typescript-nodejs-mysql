@@ -14,7 +14,7 @@ const Aside=()=>{
             <div className='menu'>
                 <div className='menu-item'>
                     <FaIgloo/>
-                    Dashboard
+                    <Link href='./index'>Dashboard</Link>
                 </div>
                 <div className='menu-item'>
                     <FaUsers />
@@ -30,15 +30,15 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaClipboardCheck/>
-                    Finished Tasks
+                    <Link href='/finishedTask'>Finished Tasks </Link>
                 </div>
                 <div className='menu-item'>
                     <FaRegClipboard/>
-                    Penddning Tasks
+                    <Link href='/peddingTasks'>Pedding Tasks</Link>
                 </div>
                 <div className='menu-item'>
                     <FaPercentage/>
-                    Percentage Of Tasks
+                    <Link href='/percentageOfTasks'>Percentage Of Tasks</Link>
                 </div>
                 <div className='menu-item'>
                     <FaCartPlus />

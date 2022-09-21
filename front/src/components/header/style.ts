@@ -46,4 +46,11 @@ export const Container=styled.nav`
             }
         }
     }
+      @media screen and (max-width:800px){
+        
+        .searchContainer{
+            display: none;
+        }
+        
+    }
 `;

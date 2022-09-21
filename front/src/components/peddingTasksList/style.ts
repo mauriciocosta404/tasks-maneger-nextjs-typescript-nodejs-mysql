@@ -28,10 +28,7 @@ export const Container=styled.div`
             text-align: center;
         }
         td:last-child{
-            color:#77AA00;
-        }
-        .close{
-            color:#CC0000 ;
+            color:#CC0000;
         }
     }
     

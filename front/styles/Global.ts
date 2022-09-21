@@ -31,10 +31,16 @@ export const GlobalStyle=createGlobalStyle`
     
     
     @media screen and (max-width:800px){
-        .rightSide{
-            display: none;
-        }
         
+        html{
+            font-size: 83%;
+        }
+        aside{
+            max-width: 5rem;
+            a{
+                display: none;
+            }
+        }
         
     }
 `;

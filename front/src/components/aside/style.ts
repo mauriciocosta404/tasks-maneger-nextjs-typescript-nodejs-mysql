@@ -12,7 +12,7 @@ export const Container=styled.aside`
     .logoP{
         padding: 1rem;
         display: flex;
-        gap:1rem;
+        gap:1.5rem;
         align-items: center;
         h2{
             font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

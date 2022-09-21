@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import * as C from './style';
-import {FaCheck, FaTimes} from 'react-icons/fa';
+import {FaTimes,FaCheck} from 'react-icons/fa';
 
-const TaskList=()=>{
+const PeddingTaskList=()=>{
 
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
 
@@ -28,25 +28,25 @@ const TaskList=()=>{
                             <td>Comer</td>
                             <td>Comer 2 pães com manteiga</td>
                             <td>**********</td>
-                            <td><FaCheck/></td>
+                            <td><FaTimes/></td>
                         </tr>
                         <tr>
                             <td>Bazar</td>
                             <td>Bazar na escola com as crianças</td>
                             <td>**********</td>
-                            <td><FaCheck /></td>
+                            <td><FaTimes /></td>
                         </tr>
                         <tr>
                             <td>Codar</td>
                             <td>Codar com o José em php</td>
                             <td>**********</td>
-                            <td><FaTimes className='close'/></td>
+                            <td><FaTimes /></td>
                         </tr>
                         <tr>
                             <td>Dormir</td>
                             <td>Dormir sozinho</td>
                             <td>**********</td>
-                            <td><FaTimes className='close'/></td>
+                            <td><FaTimes /></td>
                         </tr>
                     </tbody>
                     
@@ -56,4 +56,4 @@ const TaskList=()=>{
         </C.Container>
     )
 }
-export default TaskList;
+export default PeddingTaskList;
