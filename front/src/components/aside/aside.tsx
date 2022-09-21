@@ -22,7 +22,7 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaUserGraduate />
-                    Admin
+                    <Link href='/admin'>Admin</Link>
                 </div>
                 <div className='menu-item'>
                     <FaClipboardList />
