@@ -4,7 +4,10 @@ import { ICreateUserRequestDTO } from '../../useCases/ICreateUserDTO';
 
 class UsersRepository implements IUsersRepository{
 
-    private usersRepository:User[]=[];
+    private usersRepository:User[];
+    constructor(){
+        this.usersRepository=[];
+    }
 
     async save({name,email,password}: ICreateUserRequestDTO): Promise<User> {
 
@@ -20,10 +23,14 @@ class UsersRepository implements IUsersRepository{
         return user;
     }
     findByEmail(email: string): boolean {
-        console.log(this.usersRepository);
         
         const verifyIfUserExists= this.usersRepository.some((item)=>item.email===email);
         return verifyIfUserExists;
     }
+
+    getUsers(): User[] {
+        console.log(this.usersRepository);      
+        return this.usersRepository;  
+    };
 }
 export {UsersRepository};

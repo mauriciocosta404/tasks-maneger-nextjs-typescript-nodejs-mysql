@@ -1,6 +1,7 @@
 import * as C from './style';
 import Image from 'next/image';
 import { FaIgloo,FaCartPlus, FaLeaf,FaUsers,FaUserGraduate,FaClipboardList,FaClipboardCheck,FaPercentage } from 'react-icons/fa';
+import Link from 'next/link';
 
 const Aside=()=>{
     return(
@@ -17,7 +18,7 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaUsers />
-                    All Users
+                    <Link href='/usersList'>All Users</Link>
                 </div>
                 <div className='menu-item'>
                     <FaUserGraduate />
@@ -25,7 +26,7 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaClipboardList />
-                    All Tasks
+                    <Link href='/index'>All tasks</Link>
                 </div>
                 <div className='menu-item'>
                     <FaClipboardCheck/>
@@ -37,7 +38,7 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaCartPlus />
-                    <a href="/addUsers">Add Users</a>
+                    <Link href="/addUsers">Add Users</Link>
                 </div>
             </div>
         </C.Container>

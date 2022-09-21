@@ -6,11 +6,10 @@ export class CreateUserUseCase{
 
    async execute({email,name,password}:ICreateUserRequestDTO){
         const verifyIfUserAlreadyExists=this.userRepository.findByEmail(email);
-        console.log(verifyIfUserAlreadyExists);
+      
         if (verifyIfUserAlreadyExists) {
             throw new Error("user already exists");
         }
-
         
         this.userRepository.save({name,email,password});
    }

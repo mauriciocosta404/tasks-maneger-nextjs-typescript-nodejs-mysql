@@ -1,10 +1,14 @@
 import { Router } from "express";
 import { createUserController } from "../useCases";
+import { getUsersController } from "../useCases/getUsers";
 
 const router=Router();
 
 router.get('/',(request,response)=>{
-    return response.json({message:'kkkn hjj'});
+
+    const users=getUsersController.handleUsers(request,response);
+
+    return response.json(users);
 })
 router.post('/',(request,response)=>{
     createUserController.handle(request,response);  

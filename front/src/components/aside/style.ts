@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container=styled.aside`
     position: sticky;
+    bottom: 0;
+    top: 0;
     padding: 1rem 0rem 1rem 1rem;
     background-color:#e41386;
     height: 100vh;
