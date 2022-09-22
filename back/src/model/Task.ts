@@ -2,6 +2,8 @@ import { randomUUID as uuidv4 } from 'crypto';
 
 class Task{
     name: string;
+    description:string;
+    status:string;
     id: string;
 
     constructor() {

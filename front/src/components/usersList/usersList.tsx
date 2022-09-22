@@ -2,7 +2,7 @@ import * as C from './style';
 import { useState } from 'react';
 
 const UsersList=()=>{
-
+    
     const [showAllUsers,setShowAllUsers]=useState<boolean>(true);
 
     return(

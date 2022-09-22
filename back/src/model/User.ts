@@ -6,7 +6,6 @@ class User{
     email:string;
     password:string;
     id?:string;
-    tasks?:Task[];
 
     constructor(){
         if(!this.id){
