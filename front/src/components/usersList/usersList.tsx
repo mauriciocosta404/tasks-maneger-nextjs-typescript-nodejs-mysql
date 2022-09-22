@@ -1,9 +1,22 @@
 import * as C from './style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {api} from '../../services/api';
 
-const UsersList=()=>{
-    
+interface userProps{
+    name:string;
+    email:string;
+    password:string;
+}
+
+const UsersList=({name,email,password}:userProps)=>{
+
+    const [users,setUsers]=useState<userProps[]>([]);
     const [showAllUsers,setShowAllUsers]=useState<boolean>(true);
+
+    useEffect(() => {
+        api.get('/users').
+            then((data) => setUsers(data.data));
+    }, []);
 
     return(
         <C.Container>
@@ -21,41 +34,14 @@ const UsersList=()=>{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
-                        <tr>
-                            <td>Mauricio Costa</td>
-                            <td>mc611641@gmail.com</td>
-                            <td>**********</td>
-                        </tr>
+                        {users.map((user,key)=>(
+                            <tr key={key}>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                                <td>**********</td>
+                            </tr>
+                        ))}
+                        
                     </tbody>
                     
                 </table>
