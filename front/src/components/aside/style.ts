@@ -25,7 +25,7 @@ export const Container=styled.aside`
         margin-top: 3rem;
     }
     .menu >div{
-        padding: 1rem;
+        padding: .9rem;
         border-radius: 5rem 0rem 0rem 5rem;
         display: flex;
         gap: 1rem;

@@ -28,6 +28,7 @@ class TaskRepository implements ITasksRepository{
         connection.query(SQL, [name, description, status,idUser], (err, result) => {
             console.log(err);
         });
+        
         this.getTasks();
     }
 

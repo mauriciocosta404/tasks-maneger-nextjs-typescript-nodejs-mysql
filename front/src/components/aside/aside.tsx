@@ -1,6 +1,6 @@
 import * as C from './style';
 import Image from 'next/image';
-import { FaIgloo,FaCartPlus, FaRegClipboard,FaLeaf,FaUsers,FaUserGraduate,FaClipboardList,FaClipboardCheck,FaPercentage } from 'react-icons/fa';
+import { FaIgloo,FaCartPlus, FaRegClipboard,FaLeaf,FaUsers,FaUserGraduate,FaClipboardList,FaClipboardCheck,FaPercentage, FaNewspaper, FaHeartbeat } from 'react-icons/fa';
 import Link from 'next/link';
 
 const Aside=()=>{
@@ -58,7 +58,13 @@ const Aside=()=>{
                     <Link href="/addUsers">
                         <FaCartPlus />
                     </Link>
-                    <Link href="/addUsers">Add Users</Link>
+                    <Link href="/addUsers">Add User</Link>
+                </div>
+                <div className='menu-item'>
+                    <Link href="/addUsers">
+                        <FaHeartbeat />
+                    </Link>
+                    <Link href="/addUsers">Add Task</Link>
                 </div>
             </div>
         </C.Container>
