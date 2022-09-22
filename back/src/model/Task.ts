@@ -4,6 +4,7 @@ class Task{
     name: string;
     description:string;
     status:string;
+    idUser:number;
     id: string;
 
     constructor() {

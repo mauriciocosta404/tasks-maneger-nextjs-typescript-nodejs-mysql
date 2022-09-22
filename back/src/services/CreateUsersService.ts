@@ -1,10 +1,5 @@
 import { IUsersRepository } from "../repositories/IUsersRapository";
-
-interface IRequest{
-    name:string;
-    email:string;
-    password:string;
-}
+import { IRequest } from "./ICreateUsers";
 
 class CreateUsersService{
     constructor(private usersRepository:IUsersRepository){}
