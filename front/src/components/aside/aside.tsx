@@ -30,7 +30,7 @@ const Aside=()=>{
                 </div>
                 <div className='menu-item'>
                     <FaClipboardCheck/>
-                    <Link href='/finishedTask'>Finished Tasks </Link>
+                    <Link href='/finishedTasks'>Finished Tasks </Link>
                 </div>
                 <div className='menu-item'>
                     <FaRegClipboard/>

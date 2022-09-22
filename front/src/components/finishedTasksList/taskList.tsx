@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import * as C from './style';
-import {FaCheck, FaTimes} from 'react-icons/fa';
+import {FaTimes,FaCheck} from 'react-icons/fa';
 
-const TaskList=()=>{
+const FinishedTaskList=()=>{
 
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
 
     return(
         <C.Container>
             <div className='head'>
-                <h3>All Tasks</h3>
+                <h3>Finished Tasks</h3>
                 <button onClick={() => setShowAllTasks(showAllTasks ? false : true)}>Hide</button>
             </div>
 
@@ -34,19 +34,19 @@ const TaskList=()=>{
                             <td>Bazar</td>
                             <td>Bazar na escola com as crianças</td>
                             <td>****</td>
-                            <td><FaCheck /></td>
+                            <td><FaCheck/></td>
                         </tr>
                         <tr>
                             <td>Codar</td>
                             <td>Codar com o José em php</td>
                             <td>****</td>
-                            <td><FaTimes className='close'/></td>
+                            <td><FaCheck /></td>
                         </tr>
                         <tr>
                             <td>Dormir</td>
                             <td>Dormir sozinho</td>
                             <td>****</td>
-                            <td><FaTimes className='close'/></td>
+                            <td><FaCheck /></td>
                         </tr>
                     </tbody>
                     
@@ -56,4 +56,4 @@ const TaskList=()=>{
         </C.Container>
     )
 }
-export default TaskList;
+export default FinishedTaskList;

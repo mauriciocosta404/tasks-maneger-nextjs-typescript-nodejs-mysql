@@ -27,25 +27,25 @@ const PeddingTaskList=()=>{
                         <tr>
                             <td>Comer</td>
                             <td>Comer 2 pães com manteiga</td>
-                            <td>**********</td>
+                            <td>****</td>
                             <td><FaTimes/></td>
                         </tr>
                         <tr>
                             <td>Bazar</td>
                             <td>Bazar na escola com as crianças</td>
-                            <td>**********</td>
+                            <td>****</td>
                             <td><FaTimes /></td>
                         </tr>
                         <tr>
                             <td>Codar</td>
                             <td>Codar com o José em php</td>
-                            <td>**********</td>
+                            <td>****</td>
                             <td><FaTimes /></td>
                         </tr>
                         <tr>
                             <td>Dormir</td>
                             <td>Dormir sozinho</td>
-                            <td>**********</td>
+                            <td>****</td>
                             <td><FaTimes /></td>
                         </tr>
                     </tbody>
