@@ -1,15 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as C from './style';
 import {FaTimes,FaCheck} from 'react-icons/fa';
+import { api } from '../../services/api';
+
+interface tasksProps {
+    name: string;
+    description: string;
+    status: string;
+    idUser: number;
+}
 
 const PeddingTaskList=()=>{
-
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
+
+    const [tasks, setTasks] = useState<tasksProps[]>();
+    useEffect(() => {
+        api.get('/tasks').
+            then((data) =>{ 
+                setTasks(data.data.filter((task:tasksProps)=>task.status==='unfinished'));
+            });
+        },
+    []);
 
     return(
         <C.Container>
             <div className='head'>
-                <h3>All Tasks</h3>
+                <h3>Pedding Tasks</h3>
                 <button onClick={() => setShowAllTasks(showAllTasks ? false : true)}>Hide</button>
             </div>
 
@@ -24,30 +40,17 @@ const PeddingTaskList=()=>{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Comer</td>
-                            <td>Comer 2 pães com manteiga</td>
-                            <td>****</td>
-                            <td><FaTimes/></td>
-                        </tr>
-                        <tr>
-                            <td>Bazar</td>
-                            <td>Bazar na escola com as crianças</td>
-                            <td>****</td>
-                            <td><FaTimes /></td>
-                        </tr>
-                        <tr>
-                            <td>Codar</td>
-                            <td>Codar com o José em php</td>
-                            <td>****</td>
-                            <td><FaTimes /></td>
-                        </tr>
-                        <tr>
-                            <td>Dormir</td>
-                            <td>Dormir sozinho</td>
-                            <td>****</td>
-                            <td><FaTimes /></td>
-                        </tr>
+                        {
+                            tasks?.map((task,key)=>(
+
+                            <tr key={key}>
+                                <td>{task.name}</td>
+                                <td>{task.description}</td>
+                                <td>****</td>
+                                <td><FaTimes/></td>
+                            </tr>          
+                            ))
+                        }
                     </tbody>
                     
                 </table>

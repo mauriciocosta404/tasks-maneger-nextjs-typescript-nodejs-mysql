@@ -1,10 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as C from './style';
 import {FaCheck, FaTimes} from 'react-icons/fa';
+import { api } from '../../services/api';
+
+interface tasksProps{
+    name:string;
+    description:string;
+    status:string;
+    idUser:number;
+}
 
 const TaskList=()=>{
 
+    const [tasks,setTasks]=useState<tasksProps[]>();
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
+    useEffect(()=>{
+            api.get('/tasks').
+            then((data)=>setTasks(data.data));
+        },
+    []);
 
     return(
         <C.Container>
@@ -24,30 +38,16 @@ const TaskList=()=>{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Comer</td>
-                            <td>Comer 2 pães com manteiga</td>
-                            <td>****</td>
-                            <td><FaCheck/></td>
-                        </tr>
-                        <tr>
-                            <td>Bazar</td>
-                            <td>Bazar na escola com as crianças</td>
-                            <td>****</td>
-                            <td><FaCheck /></td>
-                        </tr>
-                        <tr>
-                            <td>Codar</td>
-                            <td>Codar com o José em php</td>
-                            <td>****</td>
-                            <td><FaTimes className='close'/></td>
-                        </tr>
-                        <tr>
-                            <td>Dormir</td>
-                            <td>Dormir sozinho</td>
-                            <td>****</td>
-                            <td><FaTimes className='close'/></td>
-                        </tr>
+                        {
+                            tasks?.map((tasks,key)=>(
+                                <tr key={key}>
+                                    <td>{tasks.name}</td>
+                                    <td>{tasks.description}</td>
+                                    <td>****</td>
+                                    <td> {tasks.status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)} </td>
+                                </tr>
+                            ))
+                        }
                     </tbody>
                     
                 </table>

@@ -13,35 +13,51 @@ const Aside=()=>{
             </div>
             <div className='menu'>
                 <div className='menu-item'>
-                    <FaIgloo/>
-                    <Link href='./index'>Dashboard</Link>
+                    <Link href='/index'>
+                        <FaIgloo/>
+                    </Link>
+                    <Link href='/index'>Dashboard</Link>
                 </div>
                 <div className='menu-item'>
-                    <FaUsers />
+                    <Link href='/usersList'>
+                        <FaUsers />
+                    </Link>
                     <Link href='/usersList'>All Users</Link>
                 </div>
                 <div className='menu-item'>
-                    <FaUserGraduate />
+                    <Link href='/admin'>
+                        <FaUserGraduate />
+                    </Link>
                     <Link href='/admin'>Admin</Link>
                 </div>
                 <div className='menu-item'>
-                    <FaClipboardList />
+                    <Link href='/index'>
+                        <FaClipboardList />
+                    </Link>
                     <Link href='/index'>All tasks</Link>
                 </div>
                 <div className='menu-item'>
-                    <FaClipboardCheck/>
+                    <Link href='/finishedTasks'>
+                        <FaClipboardCheck/>
+                    </Link>
                     <Link href='/finishedTasks'>Finished Tasks </Link>
                 </div>
                 <div className='menu-item'>
-                    <FaRegClipboard/>
+                    <Link href='/peddingTasks'>
+                        <FaRegClipboard/>
+                    </Link>
                     <Link href='/peddingTasks'>Pedding Tasks</Link>
                 </div>
                 <div className='menu-item'>
-                    <FaPercentage/>
+                    <Link href='/percentageOfTasks'>
+                        <FaPercentage/>
+                    </Link>
                     <Link href='/percentageOfTasks'>Percentage Of Tasks</Link>
                 </div>
                 <div className='menu-item'>
-                    <FaCartPlus />
+                    <Link href="/addUsers">
+                        <FaCartPlus />
+                    </Link>
                     <Link href="/addUsers">Add Users</Link>
                 </div>
             </div>

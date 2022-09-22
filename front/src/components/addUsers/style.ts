@@ -21,5 +21,6 @@ export const AppContainer = styled.div`
         background-color: #e41386;
         border: none;
         color: #fff;
+        text-align: center;
     }
 `;
