@@ -49,12 +49,6 @@ const Aside=()=>{
                     <Link href='/peddingTasks'>Pedding Tasks</Link>
                 </div>
                 <div className='menu-item'>
-                    <Link href='/percentageOfTasks'>
-                        <FaPercentage/>
-                    </Link>
-                    <Link href='/percentageOfTasks'>Percentage Of Tasks</Link>
-                </div>
-                <div className='menu-item'>
                     <Link href="/addUsers">
                         <FaCartPlus />
                     </Link>
