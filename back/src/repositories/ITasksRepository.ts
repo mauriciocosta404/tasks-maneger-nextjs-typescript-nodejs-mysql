@@ -10,5 +10,6 @@ interface ICreateTaskDTO{
 interface ITasksRepository{
     getAllTasks():Task[];
     createTasks({name,description,status,idUser}:ICreateTaskDTO):void;
+    upDateStatus(id:number,status:string):void;
 }
 export {ITasksRepository,ICreateTaskDTO};

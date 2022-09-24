@@ -1,10 +1,10 @@
 import { Router } from "express";
 import { TaskRepository } from "../repositories/TasksRepository";
 import { CreateTasksService } from "../services/CreateTasksService";
+import { UpDataStatus } from "../services/UpDateStatusService";
 
 
 const tasksRoute=Router();
-
 const tasksRepository=new TaskRepository();
 
 
@@ -20,6 +20,14 @@ tasksRoute.get('/',(request,response)=>{
     const allTasks=tasksRepository.getAllTasks();
 
     return response.json(allTasks);
+});
+
+tasksRoute.put('/', (request, response)=>{
+    const {id,status}=request.body;
+    const upDateStatus=new UpDataStatus(tasksRepository);
+
+    upDateStatus.execute({id,status});
+    return response.json('task updated');
 });
 
 export {tasksRoute};

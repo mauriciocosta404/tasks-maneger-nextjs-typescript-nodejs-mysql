@@ -2,23 +2,37 @@ import { useState, useEffect } from 'react';
 import * as C from './style';
 import {FaCheck, FaTimes} from 'react-icons/fa';
 import { api } from '../../services/api';
+import Link from 'next/link';
 
 interface tasksProps{
     name:string;
     description:string;
     status:string;
     idUser:number;
+    id:number;
 }
 
 const TaskList=()=>{
 
     const [tasks,setTasks]=useState<tasksProps[]>();
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
+    //const [status, setStatus] = useState('');
+    const [id, setId] = useState(-1);
     useEffect(()=>{
             api.get('/tasks').
             then((data)=>setTasks(data.data));
         },
     []);
+
+    const hadleValues=(id:number,statusP:string)=>{
+        setId(id);
+        let status=statusP==='finished'?'unfinished':'finished';
+        api.put('/tasks',{
+            id,
+            status
+        });
+        window.location.replace(`/index`);
+    }
 
     return(
         <C.Container>
@@ -44,7 +58,12 @@ const TaskList=()=>{
                                     <td>{tasks.name}</td>
                                     <td>{tasks.description}</td>
                                     <td>****</td>
-                                    <td> {tasks.status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)} </td>
+                                    <td
+                                    onClick={()=>hadleValues(tasks.id,tasks.status)}
+                                    >
+                                            {tasks.status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)}    
+                                    </td>
+                                       
                                 </tr>
                             ))
                         }

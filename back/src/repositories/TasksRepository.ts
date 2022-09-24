@@ -28,8 +28,16 @@ class TaskRepository implements ITasksRepository{
         connection.query(SQL, [name, description, status,idUser], (err, result) => {
 
             this.getTasks();
-        });
-        
+        });  
+    }
+    upDateStatus(id:number,status:string) {
+
+        let SQL = 'UPDATE tasks set status=? WHERE id=?';
+
+        connection.query(SQL, [status,id], (err, result) => {
+            console.log(err);   
+            this.getTasks();
+        });  
     }
 
     private getTasks() {
