@@ -26,17 +26,17 @@ class TaskRepository implements ITasksRepository{
         let SQL = 'INSERT INTO tasks(name,description,status,idUsers) values(?,?,?,?)';
 
         connection.query(SQL, [name, description, status,idUser], (err, result) => {
-            console.log(err);
+
+            this.getTasks();
         });
         
-        this.getTasks();
     }
 
     private getTasks() {
         let SQL = "SELECT * FROM tasks";
 
         connection.query(SQL, (err, result) => {
-            err ? console.log(err) : console.log(result);
+        
             this.tasks = result;
         })
     }

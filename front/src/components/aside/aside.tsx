@@ -61,10 +61,10 @@ const Aside=()=>{
                     <Link href="/addUsers">Add User</Link>
                 </div>
                 <div className='menu-item'>
-                    <Link href="/addUsers">
+                    <Link href="/addTasks">
                         <FaHeartbeat />
                     </Link>
-                    <Link href="/addUsers">Add Task</Link>
+                    <Link href="/addTasks">Add Task</Link>
                 </div>
             </div>
         </C.Container>

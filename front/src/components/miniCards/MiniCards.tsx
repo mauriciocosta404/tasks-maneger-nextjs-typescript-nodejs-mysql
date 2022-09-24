@@ -51,7 +51,7 @@ const MiniCards=()=>{
             </C.MiniCard>
             <C.MiniCard>
                 <div className=''>
-                    <h2>{peddingCountTasks?.length}</h2>
+                    <h2>{peddingCountTasks?.length ?? 0}</h2>
                     <span>Pedding tasks</span>
                 </div>
                 <div className='icon'>
@@ -60,7 +60,7 @@ const MiniCards=()=>{
             </C.MiniCard>
             <C.MiniCard>
                 <div className=''>
-                    <h2>{finishedCountTasks?.length}</h2>
+                    <h2>{finishedCountTasks?.length ?? 0}</h2>
                     <span>Finished Tasks</span>
                 </div>
                 <div className='icon'>
