@@ -1,6 +1,6 @@
-import { connection } from "../db/connection";
-import { Admin } from "../model/Admin";
-import { IAdminRepository } from "./IAdminRepository";
+import { connection } from "../../db/connection";
+import { Admin } from "../../model/Admin";
+import { IAdminRepository } from "../IAdminRepository";
 
 class AdminRepository implements IAdminRepository{
 

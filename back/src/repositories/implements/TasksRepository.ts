@@ -1,6 +1,6 @@
-import { connection } from "../db/connection";
-import { Task } from "../model/Task";
-import { ICreateTaskDTO, ITasksRepository } from "./ITasksRepository";
+import { connection } from "../../db/connection";
+import { Task } from "../../model/Task";
+import { ICreateTaskDTO, ITasksRepository } from "../ITasksRepository";
 
 class TaskRepository implements ITasksRepository{
 

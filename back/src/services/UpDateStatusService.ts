@@ -1,5 +1,5 @@
 import { ITasksRepository } from "../repositories/ITasksRepository";
-import { TaskRepository } from "../repositories/TasksRepository";
+import { TaskRepository } from "../repositories/implements/TasksRepository";
 import { IUpDateStatus } from "./IUpDateStatusService";
 
 class UpDataStatus{

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { TaskRepository } from "../repositories/TasksRepository";
+import { TaskRepository } from "../repositories/implements/TasksRepository";
 import { CreateTasksService } from "../services/CreateTasksService";
 import { UpDataStatus } from "../services/UpDateStatusService";
 

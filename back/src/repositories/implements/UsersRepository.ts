@@ -1,6 +1,6 @@
-import { connection } from "../db/connection";
-import { User } from "../model/User";
-import { IUsersRepository } from "./IUsersRapository";
+import { connection } from "../../db/connection";
+import { User } from "../../model/User";
+import { IUsersRepository } from "../IUsersRapository";
 
 class UsersRepository implements IUsersRepository{
 
