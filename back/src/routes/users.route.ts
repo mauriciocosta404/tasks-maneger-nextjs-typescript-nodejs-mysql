@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { UsersRepository } from "../repositories/implements/UsersRepository";
-import { CreateUsersService } from "../services/CreateUsersService";
+import { CreateUsersService } from "../services/createUser/CreateUsersService";
 
 const usersRoute=Router();
 const usersRepository=new UsersRepository();

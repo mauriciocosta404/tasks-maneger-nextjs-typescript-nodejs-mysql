@@ -28,8 +28,8 @@ class UsersRepository implements IUsersRepository{
 
         connection.query(SQL,[name,email,password],(err,result)=>{
             console.log(err);
+            this.getUsers();
         });
-        this.getUsers();
     }
     list(): User[] {
        return this.users;

@@ -1,7 +1,7 @@
-import { Router } from "express";
+import { Router, Request } from 'express';
 import { TaskRepository } from "../repositories/implements/TasksRepository";
-import { CreateTasksService } from "../services/CreateTasksService";
-import { UpDataStatus } from "../services/UpDateStatusService";
+import { CreateTasksService } from "../services/createTask/CreateTasksService";
+import { UpDataStatus } from "../services/upDateTask/UpDateStatusService";
 
 
 const tasksRoute=Router();
@@ -29,5 +29,11 @@ tasksRoute.put('/', (request, response)=>{
     upDateStatus.execute({id,status});
     return response.json('task updated');
 });
+
+
+tasksRoute.delete('/',(request,response)=>{
+
+
+})
 
 export {tasksRoute};

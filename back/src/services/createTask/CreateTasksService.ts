@@ -1,4 +1,4 @@
-import { ITasksRepository } from "../repositories/ITasksRepository";
+import { ITasksRepository } from "../../repositories/ITasksRepository";
 import { ICreateTasks } from "./ICreateTasks";
 
 class CreateTasksService{

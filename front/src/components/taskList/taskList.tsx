@@ -4,6 +4,9 @@ import {FaCheck, FaTimes} from 'react-icons/fa';
 import { api } from '../../services/api';
 import Link from 'next/link';
 
+interface statusProps{
+    status:'unfinished'|'finished';
+}
 interface tasksProps{
     name:string;
     description:string;
@@ -12,33 +15,34 @@ interface tasksProps{
     id:number;
 }
 
+
 const TaskList=()=>{
 
     const [tasks,setTasks]=useState<tasksProps[]>();
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
-    //const [status, setStatus] = useState('');
-    const [id, setId] = useState(-1);
+    const [id, setId] = useState<number>(-1);
+    
     useEffect(()=>{
             api.get('/tasks').
             then((data)=>setTasks(data.data));
         },
     []);
 
-    const hadleValues=(id:number,statusP:string)=>{
+    const hadleValues=(id:number,taskStatus:string)=>{
         setId(id);
-        let status=statusP==='finished'?'unfinished':'finished';
+        let status=taskStatus==='finished'?'unfinished':'finished';
         api.put('/tasks',{
             id,
             status
         });
-        window.location.replace(`/index`);
+        //window.location.replace(`/index`);
     }
 
     return(
         <C.Container>
             <div className='head'>
                 <h3>All Tasks</h3>
-                <button onClick={() => setShowAllTasks(showAllTasks ? false : true)}>Hide</button>
+                <button onClick={()=> setShowAllTasks(!showAllTasks)}>Hide</button>
             </div>
 
             {showAllTasks &&(
@@ -53,15 +57,15 @@ const TaskList=()=>{
                     </thead>
                     <tbody>
                         {
-                            tasks?.map((tasks,key)=>(
+                            tasks?.map(({name,description,id,status},key)=>(
                                 <tr key={key}>
-                                    <td>{tasks.name}</td>
-                                    <td>{tasks.description}</td>
+                                    <td>{name}</td>
+                                    <td>{description}</td>
                                     <td>****</td>
                                     <td
-                                    onClick={()=>hadleValues(tasks.id,tasks.status)}
+                                    onClick={()=>hadleValues(id,status)}
                                     >
-                                            {tasks.status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)}    
+                                            {status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)}    
                                     </td>
                                        
                                 </tr>

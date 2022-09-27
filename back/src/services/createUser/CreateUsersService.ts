@@ -1,4 +1,4 @@
-import { IUsersRepository } from "../repositories/IUsersRapository";
+import { IUsersRepository } from "../../repositories/IUsersRapository";
 import { IRequest } from "./ICreateUsers";
 
 class CreateUsersService{

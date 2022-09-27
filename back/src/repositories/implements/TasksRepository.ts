@@ -8,7 +8,7 @@ class TaskRepository implements ITasksRepository{
 
     constructor(){
         this.getTasks();
-    }
+    }Us
 
     getAllTasks(): Task[] {
         return this.tasks;
@@ -39,13 +39,23 @@ class TaskRepository implements ITasksRepository{
             this.getTasks();
         });  
     }
+    deleteTask(id: number){
+        const SQL="DELETE FROM tasks WHERE id=?";
+
+        connection.query(SQL,[id],(err,result)=>{
+            console.log(err);
+            this.getAllTasks();
+        });
+        
+    }
 
     private getTasks() {
         let SQL = "SELECT * FROM tasks";
 
         connection.query(SQL, (err, result) => {
-        
-            this.tasks = result;
+            console.log(err);
+            this.getAllTasks();
+        this.tasks = result;
         })
     }
 

@@ -10,14 +10,10 @@ const LoginAdmin = () => {
    const [password,setPassword]=useState('');
 
    const hadleValues=()=>{
-        api.post('/users',{
-            name,
-            email,
-            password
-        });
         setName('');
         setPassword('');
         setEmail('');
+        console.log(name);
    }
 
     return (

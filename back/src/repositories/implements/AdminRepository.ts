@@ -7,12 +7,20 @@ class AdminRepository implements IAdminRepository{
     private admins:Admin[];
 
     constructor(){
-        this.admins=[];
+        this.getAdmins();
     }
 
     getAdmin(): Admin[] {
         return this.admins;
     }
+
+    verifyIfExists(email: string): Admin {
+
+        const adminExists= this.admins.find((admin)=>admin.email===email);
+
+        return adminExists;
+    }
+
     private getAdmins(){
         let SQL = 'SELECT * FROM admin';
 
@@ -21,3 +29,4 @@ class AdminRepository implements IAdminRepository{
         });
     }
 }
+export {AdminRepository}
