@@ -3,15 +3,16 @@ import { DeleteTaskUseCase } from './DeleteTaskUseCase';
 class DeleteTaskController{
     constructor(private deleteTaskUseCase:DeleteTaskUseCase){}
 
-    handle(request:Request, response: Response){    
+    async handle(request:Request, response: Response){    
 
         const { id } = request.body;
 
         try {
-            this.deleteTaskUseCase.execute({id});
-            
+            const deleteTask= await this.deleteTaskUseCase.execute({id});
+            return response.json(deleteTask);
+
         } catch (error) {
-            return response.status(400).json({message:error.message || "unexpected error"})
+            return response.status(400).json({message:error.message || "unexpected error"});
         }
     }
 }

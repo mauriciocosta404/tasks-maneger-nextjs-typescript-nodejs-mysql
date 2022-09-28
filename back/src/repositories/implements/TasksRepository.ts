@@ -39,14 +39,14 @@ class TaskRepository implements ITasksRepository{
             this.getTasks();
         });  
     }
-    deleteTask(id: number){
+    deleteTask(id: number):string{
         const SQL="DELETE FROM tasks WHERE id=?";
 
         connection.query(SQL,[id],(err,result)=>{
             console.log(err);
             this.getAllTasks();
         });
-        
+        return 'deleted';
     }
 
     private getTasks() {

@@ -4,8 +4,10 @@ import { IDeleteTask } from "./IDeleteTask";
 class DeleteTaskUseCase{
     constructor(private tasksRepository:ITasksRepository){}
 
-    execute({id}:IDeleteTask){
+    async execute({id}:IDeleteTask){
+        const deleteTask = await this.tasksRepository.deleteTask(id);
         
+        return deleteTask;
     }
 }
 export {DeleteTaskUseCase};

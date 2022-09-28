@@ -1,6 +1,7 @@
 import { Router, Request } from 'express';
 import { TaskRepository } from "../repositories/implements/TasksRepository";
 import { CreateTasksService } from "../services/createTask/CreateTasksService";
+import { deleteTaskController } from '../services/deleteTask';
 import { UpDataStatus } from "../services/upDateTask/UpDateStatusService";
 
 
@@ -32,8 +33,7 @@ tasksRoute.put('/', (request, response)=>{
 
 
 tasksRoute.delete('/',(request,response)=>{
-
-
+    deleteTaskController.handle(request,response);
 })
 
 export {tasksRoute};
