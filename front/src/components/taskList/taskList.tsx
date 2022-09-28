@@ -68,7 +68,7 @@ const TaskList=()=>{
                                             {status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)}    
                                     </td>
                                        
-                                </tr>
+                                  </tr>
                             ))
                         }
                     </tbody>
