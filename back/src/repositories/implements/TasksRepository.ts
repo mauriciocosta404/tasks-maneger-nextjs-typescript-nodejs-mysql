@@ -11,9 +11,10 @@ class TaskRepository implements ITasksRepository{
     }
 
     getAllTasks(): Task[] {
+        this.getTasks();
         return this.tasks;
     }
-    createTasks({ id,name, description, status, idUser }: ICreateTaskDTO): void {
+    createTasks({ name, description, status, idUser }: ICreateTaskDTO): void {
         const task=new Task();
 
         Object.assign(task,{
@@ -25,11 +26,12 @@ class TaskRepository implements ITasksRepository{
 
         let SQL = 'INSERT INTO tasks(id,name,description,status,idUsers) values(?,?,?,?,?)';
 
-        connection.query(SQL, [id,name, description, status,idUser], (err, result) => {
-
+        connection.query(SQL, [task.id,task.name, task.description, task.status,task.idUser], (err, result) => {
+            console.log(err);
             this.getTasks();
         });  
     }
+
     upDateStatus(id:string,status:string) {
         let SQL = 'UPDATE tasks set status=? WHERE id=?';
 
@@ -39,9 +41,8 @@ class TaskRepository implements ITasksRepository{
     }
     deleteTask(idUser: string):string{
         let SQL="DELETE FROM tasks WHERE id=?";
-        let id=Number(idUser);
 
-        connection.query(SQL,[id],(err,result)=>{ 
+        connection.query(SQL,[idUser],(err,result)=>{ 
             this.getTasks();
         });
 
@@ -52,9 +53,8 @@ class TaskRepository implements ITasksRepository{
         let SQL = "SELECT * FROM tasks";
 
         connection.query(SQL, (err, result) => {
-            console.log(result);
-            this.getAllTasks();
-        this.tasks = result;
+            //console.log(result);
+            this.tasks = result;
         })
     }
 

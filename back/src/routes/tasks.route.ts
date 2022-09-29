@@ -1,20 +1,15 @@
 import { Router, Request } from 'express';
 import { TaskRepository } from "../repositories/implements/TasksRepository";
-import { CreateTasksService } from "../services/createTask/CreateTasksService";
+import { createTaskController } from '../services/createTask';
 import { deleteTaskController } from '../services/deleteTask';
 import { UpDataStatus } from "../services/upDateTask/UpDateStatusService";
-
 
 const tasksRoute=Router();
 const tasksRepository=new TaskRepository();
 
 
 tasksRoute.post('/', (request, response) => {
-    const {name,description,status,idUser}=request.body;
-    const createTasksServie=new CreateTasksService(tasksRepository);
-
-    createTasksServie.execute({name,description, status,idUser});
-    return response.json({message:'created'});
+    createTaskController.handle(request,response);
 });
 
 tasksRoute.get('/',(request,response)=>{
