@@ -1,10 +1,10 @@
 import { IUsersRepository } from "../../repositories/IUsersRapository";
 import { IRequest } from "./ICreateUsers";
 
-class CreateUsersService{
+class CreateUsersUseCase{
     constructor(private usersRepository:IUsersRepository){}
 
-    execute({name,email,password}:IRequest){
+    async execute({name,email,idAdmin}:IRequest){
 
         const userAlreadyExists=this.usersRepository.findByEmail(email);
 
@@ -12,7 +12,7 @@ class CreateUsersService{
             throw new Error("user already exists");
         }        
 
-        this.usersRepository.create({name,email,password});
+        this.usersRepository.create({name,email,idAdmin});
     }
 }
-export {CreateUsersService};
+export {CreateUsersUseCase};

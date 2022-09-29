@@ -6,7 +6,7 @@ class DeleteTaskUseCase{
 
     async execute({id}:IDeleteTask){
         const deleteTask = await this.tasksRepository.deleteTask(id);
-        
+
         return deleteTask;
     }
 }

@@ -1,6 +1,7 @@
 import { Task } from "../model/Task";
 
 interface ICreateTaskDTO{
+    id: string;
     name:string;
     description:string;
     status:string;
@@ -9,8 +10,8 @@ interface ICreateTaskDTO{
 
 interface ITasksRepository{
     getAllTasks():Task[];
-    createTasks({name,description,status,idUser}:ICreateTaskDTO):void;
-    upDateStatus(id:number,status:string):void;
-    deleteTask(id:number):string;
+    createTasks({id,name,description,status,idUser}:ICreateTaskDTO):void;
+    upDateStatus(id:string,status:string):void;
+    deleteTask(id:string):string;
 }
 export {ITasksRepository,ICreateTaskDTO};

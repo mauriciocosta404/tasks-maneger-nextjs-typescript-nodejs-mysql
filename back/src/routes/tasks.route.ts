@@ -32,7 +32,7 @@ tasksRoute.put('/', (request, response)=>{
 });
 
 
-tasksRoute.delete('/',(request,response)=>{
+tasksRoute.delete('/:id',(request,response)=>{
     deleteTaskController.handle(request,response);
 })
 

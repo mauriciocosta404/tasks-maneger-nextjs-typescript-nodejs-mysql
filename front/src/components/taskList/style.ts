@@ -28,12 +28,9 @@ export const Container=styled.div`
             text-align: center;
         }
         td:last-child{
-            color:#77AA00;
             cursor: pointer;
         }
-        .close{
-            color:#CC0000 ;
-        }
+        
     }
     
 `;

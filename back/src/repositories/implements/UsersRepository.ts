@@ -15,30 +15,32 @@ class UsersRepository implements IUsersRepository{
 
         return verifyIfExists;
     }
-    create({ name, email, password }: User): void {
+    create({ name, email, idAdmin }: User): void {
         const user=new User();
         
         Object.assign(user,{
             name,
             email,
-            password
+            idAdmin
         });
 
-        let SQL='INSERT INTO users(name,email,password) values(?,?,?)';
+        let SQL='INSERT INTO users(id,name,email) values(?,?,?)';
 
-        connection.query(SQL,[name,email,password],(err,result)=>{
-            console.log(err);
+        connection.query(SQL,[user.id,user.name,user.email,/*user.idAdmin*/],(err,result)=>{
+            //console.log(err);
             this.getUsers();
         });
     }
     list(): User[] {
+        this.getUsers();
+
        return this.users;
     }
     private getUsers(){
         let SQL = "SELECT * FROM users";
 
         connection.query(SQL, (err, result) => {
-            err ? console.log(err) : console.log(result);
+           // err ? console.log(err) : console.log(result);
             this.users = result;
         })
     }

@@ -4,8 +4,8 @@ import { Task } from './Task';
 class User{
     name:string;
     email:string;
-    password:string;
     id?:string;
+    idAdmin
 
     constructor(){
         if(!this.id){

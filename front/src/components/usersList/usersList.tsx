@@ -5,10 +5,10 @@ import {api} from '../../services/api';
 interface userProps{
     name:string;
     email:string;
-    password:string;
+    idAdmin:string;
 }
 
-const UsersList=({name,email,password}:userProps)=>{
+const UsersList=({name,email,idAdmin}:userProps)=>{
 
     const [users,setUsers]=useState<userProps[]>([]);
     const [showAllUsers,setShowAllUsers]=useState<boolean>(true);
@@ -16,6 +16,7 @@ const UsersList=({name,email,password}:userProps)=>{
     useEffect(() => {
         api.get('/users').
             then((data) => setUsers(data.data));
+            
     }, []);
 
     return(
@@ -34,10 +35,10 @@ const UsersList=({name,email,password}:userProps)=>{
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user,key)=>(
+                        {users.map(({name,email},key)=>(
                             <tr key={key}>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
+                                <td>{name}</td>
+                                <td>{email}</td>
                                 <td>**********</td>
                             </tr>
                         ))}

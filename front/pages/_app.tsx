@@ -1,17 +1,18 @@
 import type { AppProps } from 'next/app';
 import MainContainer from '../src/components/mainContentainer/MainContainer';
 import { AuthProvider } from '../src/context/authContext';
+import { TasksProvider } from '../src/context/tasksContext';
 import { GlobalStyle } from '../styles/Global';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
   <>
   <GlobalStyle/>
-  <AuthProvider >
+  <TasksProvider >
     <MainContainer>
         <Component {...pageProps} />
     </MainContainer>
-  </AuthProvider>
+  </TasksProvider>
     
   </>)
 }

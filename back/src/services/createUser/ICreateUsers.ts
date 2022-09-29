@@ -1,6 +1,6 @@
 interface IRequest {
     name: string;
     email: string;
-    password: string;
+    idAdmin: string;
 }
 export {IRequest};

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as C from './style';
-import {FaCheck, FaTimes} from 'react-icons/fa';
+import {FaCheck, FaTimes, FaTrash} from 'react-icons/fa';
 import { api } from '../../services/api';
 import Link from 'next/link';
 
@@ -12,7 +12,7 @@ interface tasksProps{
     description:string;
     status:string;
     idUser:number;
-    id:number;
+    id:string;
 }
 
 
@@ -20,7 +20,9 @@ const TaskList=()=>{
 
     const [tasks,setTasks]=useState<tasksProps[]>();
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
-    const [id, setId] = useState<number>(-1);
+    const [id, setId] = useState<string>('');
+    const [handleLoad, setHandleLoad] = useState<boolean>(false);
+    //const [status, setStatus] = useState<string>('');
     
     useEffect(()=>{
             api.get('/tasks').
@@ -28,14 +30,37 @@ const TaskList=()=>{
         },
     []);
 
-    const hadleValues=(id:number,taskStatus:string)=>{
+ 
+
+    const hadleValues=(id:string,taskStatus:string)=>{
         setId(id);
-        let status=taskStatus==='finished'?'unfinished':'finished';
+
+        let status=
+        taskStatus==='finished'?
+        'unfinished':
+        'finished';
+
+        setTasks(tasks?.map((task) => 
+            task.id === id
+                ? {
+                    ...task,
+                    status
+                }
+                : task
+                ));
+        
         api.put('/tasks',{
             id,
             status
         });
-        //window.location.replace(`/index`);
+       
+    }
+
+    const deleteTask=(id:string)=>{
+
+        api.delete('/tasks/'+id);
+       
+        setTasks(tasks?.filter((task)=>task.id!==id));
     }
 
     return(
@@ -50,9 +75,9 @@ const TaskList=()=>{
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Description</th>
-                            <th>Codigo</th>
+                            <th>Description</th>    
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,13 +86,12 @@ const TaskList=()=>{
                                 <tr key={key}>
                                     <td>{name}</td>
                                     <td>{description}</td>
-                                    <td>****</td>
                                     <td
                                     onClick={()=>hadleValues(id,status)}
                                     >
-                                            {status === 'finished' ? (<FaCheck />):(<FaTimes className='close'/>)}    
+                                        {status === 'finished' ? (<FaCheck color='#77AA00'  />) : (<FaTimes color='#CC0000' />)}    
                                     </td>
-                                       
+                                    <td onClick={()=>deleteTask(id)}><FaTrash color='#CC0000'/></td>
                                   </tr>
                             ))
                         }

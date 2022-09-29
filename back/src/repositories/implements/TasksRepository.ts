@@ -8,12 +8,12 @@ class TaskRepository implements ITasksRepository{
 
     constructor(){
         this.getTasks();
-    }Us
+    }
 
     getAllTasks(): Task[] {
         return this.tasks;
     }
-    createTasks({ name, description, status, idUser }: ICreateTaskDTO): void {
+    createTasks({ id,name, description, status, idUser }: ICreateTaskDTO): void {
         const task=new Task();
 
         Object.assign(task,{
@@ -23,29 +23,28 @@ class TaskRepository implements ITasksRepository{
             idUser
         });
 
-        let SQL = 'INSERT INTO tasks(name,description,status,idUsers) values(?,?,?,?)';
+        let SQL = 'INSERT INTO tasks(id,name,description,status,idUsers) values(?,?,?,?,?)';
 
-        connection.query(SQL, [name, description, status,idUser], (err, result) => {
+        connection.query(SQL, [id,name, description, status,idUser], (err, result) => {
 
             this.getTasks();
         });  
     }
-    upDateStatus(id:number,status:string) {
-
+    upDateStatus(id:string,status:string) {
         let SQL = 'UPDATE tasks set status=? WHERE id=?';
 
-        connection.query(SQL, [status,id], (err, result) => {
-            console.log(err);   
+        connection.query(SQL, [status,id], (err, result) => { 
             this.getTasks();
         });  
     }
-    deleteTask(id: number):string{
-        const SQL="DELETE FROM tasks WHERE id=?";
+    deleteTask(idUser: string):string{
+        let SQL="DELETE FROM tasks WHERE id=?";
+        let id=Number(idUser);
 
-        connection.query(SQL,[id],(err,result)=>{
-            console.log(err);
-            this.getAllTasks();
+        connection.query(SQL,[id],(err,result)=>{ 
+            this.getTasks();
         });
+
         return 'deleted';
     }
 
@@ -53,7 +52,7 @@ class TaskRepository implements ITasksRepository{
         let SQL = "SELECT * FROM tasks";
 
         connection.query(SQL, (err, result) => {
-            console.log(err);
+            console.log(result);
             this.getAllTasks();
         this.tasks = result;
         })

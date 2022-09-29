@@ -1,4 +1,4 @@
 interface IDeleteTask{
-    id:number;
+    id:string;
 }
 export {IDeleteTask};

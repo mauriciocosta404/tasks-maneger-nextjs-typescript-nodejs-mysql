@@ -5,8 +5,7 @@ class DeleteTaskController{
 
     async handle(request:Request, response: Response){    
 
-        const { id } = request.body;
-
+        const { id } = request.params;
         try {
             const deleteTask= await this.deleteTaskUseCase.execute({id});
             return response.json(deleteTask);

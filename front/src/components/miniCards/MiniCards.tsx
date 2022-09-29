@@ -1,7 +1,8 @@
 import { FaUsers,FaClipboardList,FaRegClipboard,FaClipboardCheck } from 'react-icons/fa';
 import * as C from './style';
 import { api } from '../../services/api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
+import { TasksContext } from '../../context/tasksContext';
 
 interface tasksProps {
     name: string;
@@ -27,6 +28,7 @@ const MiniCards=()=>{
                 setPeddingCountTasks(data.data.filter((task: tasksProps) => task.status === 'unfinished'));
                 setFinishedCountTasks(data.data.filter((task: tasksProps) => task.status === 'finished'));
             });
+            console.log(TasksContext);
     },[]);
 
     return(
