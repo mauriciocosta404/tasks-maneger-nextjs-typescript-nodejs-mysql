@@ -1,5 +1,5 @@
 interface IUpDateStatus{
-    id:number;
+    id:string;
     status:string;
 }
 

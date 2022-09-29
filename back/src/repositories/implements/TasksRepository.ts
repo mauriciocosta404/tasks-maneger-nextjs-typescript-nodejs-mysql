@@ -27,7 +27,7 @@ class TaskRepository implements ITasksRepository{
         let SQL = 'INSERT INTO tasks(id,name,description,status,idUsers) values(?,?,?,?,?)';
 
         connection.query(SQL, [task.id,task.name, task.description, task.status,task.idUser], (err, result) => {
-            console.log(err);
+            //console.log(err);
             this.getTasks();
         });  
     }
@@ -36,6 +36,7 @@ class TaskRepository implements ITasksRepository{
         let SQL = 'UPDATE tasks set status=? WHERE id=?';
 
         connection.query(SQL, [status,id], (err, result) => { 
+            console.log(err);
             this.getTasks();
         });  
     }
@@ -55,7 +56,7 @@ class TaskRepository implements ITasksRepository{
         connection.query(SQL, (err, result) => {
             //console.log(result);
             this.tasks = result;
-        })
+        });
     }
 
 }
