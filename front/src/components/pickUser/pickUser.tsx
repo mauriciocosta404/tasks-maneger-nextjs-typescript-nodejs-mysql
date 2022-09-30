@@ -9,7 +9,7 @@ interface userProps {
     id:number;
 }
 
-interface PickUserProps{
+interface PickUserProps{    
     setShowPickUser(showPickUser:boolean):void;
     handleValues():void;
     name: string;
@@ -42,16 +42,16 @@ const PickUser=({name,description,status,setShowPickUser,handleValues}:PickUserP
         <C.Container>
             <C.UsersContainer>
                 {
-                    users.map((user,key)=>(
-                        <div key={key} onClick={()=>handle(user.id)}>
+                    users.map(({name,email,id},key)=>(
+                        <div key={key} onClick={()=>handle(id)}>
                             <div className='initial'>
-                                {user.name.charAt(0)}
+                                {name.charAt(0)}
                             </div>
                             <div className='userInfo'>
                                 <h3>
-                                    {user.name}
+                                    {name}
                                 </h3>
-                                <span>{user.email}</span>
+                                <span>{email}</span>
                             </div>
                         </div>
                     ))

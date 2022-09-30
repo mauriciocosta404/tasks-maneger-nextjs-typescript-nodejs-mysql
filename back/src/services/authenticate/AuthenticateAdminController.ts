@@ -4,6 +4,7 @@ import { AdminRepository } from '../../repositories/implements/AdminRepository';
 import { AuthenticateAdminUseCase } from './AuthenticateAdminUseCase';
 class AuthenticateAdminController{
     constructor(private authenticateAdminUseCase:AuthenticateAdminUseCase){}
+    
     async handle(request:Request,response: Response){
         const {email,password}=request.body;
 

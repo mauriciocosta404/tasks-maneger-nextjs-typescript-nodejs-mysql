@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as C from './style';
 import {FaCheck, FaTimes, FaTrash} from 'react-icons/fa';
 import { api } from '../../services/api';
 import Link from 'next/link';
+import { TasksContext } from '../../context/tasksContext';
 
 interface statusProps{
     status:'unfinished'|'finished';
@@ -18,19 +19,10 @@ interface tasksProps{
 
 const TaskList=()=>{
 
-    const [tasks,setTasks]=useState<tasksProps[]>();
+    const {tasks,setTasks}:tasksProps[] | any=useContext(TasksContext);
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
     const [id, setId] = useState<string>('');
     const [handleLoad, setHandleLoad] = useState<boolean>(false);
-    //const [status, setStatus] = useState<string>('');
-    
-    useEffect(()=>{
-            api.get('/tasks').
-            then((data)=>setTasks(data.data));
-        },
-    []);
-
- 
 
     const hadleValues=(id:string,taskStatus:string)=>{
         setId(id);
@@ -40,7 +32,7 @@ const TaskList=()=>{
         'unfinished':
         'finished';
 
-        setTasks(tasks?.map((task) => 
+        setTasks(tasks?.map((task:tasksProps) => 
             task.id === id
                 ? {
                     ...task,
@@ -60,7 +52,7 @@ const TaskList=()=>{
 
         api.delete('/tasks/'+id);
        
-        setTasks(tasks?.filter((task)=>task.id!==id));
+        setTasks(tasks?.filter((task:tasksProps)=>task.id!==id));
     }
 
     return(
@@ -82,7 +74,7 @@ const TaskList=()=>{
                     </thead>
                     <tbody>
                         {
-                            tasks?.map(({name,description,id,status},key)=>(
+                            tasks?.map(({name,description,id,status}:tasksProps,key:number)=>(
                                 <tr key={key}>
                                     <td>{name}</td>
                                     <td>{description}</td>

@@ -7,23 +7,26 @@ interface tasksProps {
     name: string;
     description: string;
     status: string;
-    idUser: number;
+    idUser: string;
     id: string;
 }
 
-export const TasksContext = createContext({} as tasksProps[] | string);
+export const TasksContext = createContext({});
 
+/*
 export function TasksProvider({ children }: PropsWithChildren) {
     const [tasks, setTasks] = useState<tasksProps[]>([]);
-    const dme='denkjne';
-    useEffect(()=>{
+    
+
+    async function signIn(){
         api.get('/tasks').
-            then((data) => setTasks(data.data));
-    },[]);
+            then(async (data)  => setTasks(await data.data));
+    }
+
 
     return (
-        <TasksContext.Provider value={ dme }>
+        <TasksContext.Provider value={ tasks }>
             {children}
         </TasksContext.Provider>
-    )
-}
+    );
+}*/

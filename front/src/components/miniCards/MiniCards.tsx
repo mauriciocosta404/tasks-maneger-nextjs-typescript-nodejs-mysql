@@ -3,6 +3,7 @@ import * as C from './style';
 import { api } from '../../services/api';
 import { useEffect, useState,useContext } from 'react';
 import { TasksContext } from '../../context/tasksContext';
+import { UsersContext } from '../../context/usersContext';
 
 interface tasksProps {
     name: string;
@@ -10,26 +11,26 @@ interface tasksProps {
     status: string;
     idUser: number;
 }
-
+interface usersProps {
+    id: string;
+    name: string;
+    email: string;
+}
 const MiniCards=()=>{
-
+    const {tasks}:tasksProps | any=useContext(TasksContext);
+    const {users}:usersProps | any =useContext(UsersContext);
     const [countUsers,setCountUsers]=useState(0);
     const [countTasks,setCountTasks]=useState(0);
     const [peddingCountTasks, setPeddingCountTasks] = useState<tasksProps[]>();
     const [finishedCountTasks, setFinishedCountTasks] = useState<tasksProps[]>();
+    
     useEffect(()=>{
-        api.get('/users').
-        then((data)=>setCountUsers(data.data.length));
-
-        api.get('/tasks').
-            then((data) => 
-            {
-                setCountTasks(data.data.length),
-                setPeddingCountTasks(data.data.filter((task: tasksProps) => task.status === 'unfinished'));
-                setFinishedCountTasks(data.data.filter((task: tasksProps) => task.status === 'finished'));
-            });
-            console.log(TasksContext);
-    },[]);
+        setCountUsers(users.length)
+                setCountTasks(tasks.length),
+                setPeddingCountTasks(tasks.filter((task: tasksProps) => task.status === 'unfinished'));
+                setFinishedCountTasks(tasks.filter((task: tasksProps) => task.status === 'finished'));
+        
+    },[users,tasks]);
 
     return(
         <C.Container>

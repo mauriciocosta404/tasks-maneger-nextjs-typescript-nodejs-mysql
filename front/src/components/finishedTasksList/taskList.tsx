@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import * as C from './style';
 import {FaTimes,FaCheck} from 'react-icons/fa';
 import { api } from '../../services/api';
+import { TasksContext } from '../../context/tasksContext';
 
 interface tasksProps {
     name: string;
@@ -13,15 +14,13 @@ interface tasksProps {
 const FinishedTaskList=()=>{
 
     const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
+    const [finishedTasks,setFinishedTasks]=useState<tasksProps[]>([]);
+    const {tasks,setTasks}:tasksProps[] | any=useContext(TasksContext);
 
-    const [tasks, setTasks] = useState<tasksProps[]>();
     useEffect(() => {
-        api.get('/tasks').
-            then((data) => {
-                setTasks(data.data.filter((task: tasksProps) => task.status === 'finished'));
-            });
-        },
-    []);
+        setFinishedTasks(tasks.filter((task: tasksProps) => task.status === 'finished'));
+        }
+    ,[tasks]);
 
     return(
         <C.Container>
@@ -42,10 +41,10 @@ const FinishedTaskList=()=>{
                     </thead>
                     <tbody>
                         {
-                            tasks?.map((task,key)=>(
+                            finishedTasks?.map(({name,description}:tasksProps,key:number)=>(
                                 <tr key={key}>
-                                    <td>{task.name}</td>
-                                    <td>{task.description}</td>
+                                    <td>{name}</td>
+                                    <td>{description}</td>
                                     <td>****</td>
                                     <td><FaCheck/></td>
                                 </tr>

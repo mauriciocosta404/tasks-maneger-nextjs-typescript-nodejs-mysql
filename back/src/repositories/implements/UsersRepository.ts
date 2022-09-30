@@ -15,6 +15,7 @@ class UsersRepository implements IUsersRepository{
 
         return verifyIfExists;
     }
+    
     create({ name, email, idAdmin }: User): void {
         const user=new User();
         
@@ -31,16 +32,17 @@ class UsersRepository implements IUsersRepository{
             this.getUsers();
         });
     }
+
     list(): User[] {
         this.getUsers();
 
-       return this.users;
+        return this.users;
     }
+
     private getUsers(){
         let SQL = "SELECT * FROM users";
 
         connection.query(SQL, (err, result) => {
-           // err ? console.log(err) : console.log(result);
             this.users = result;
         })
     }

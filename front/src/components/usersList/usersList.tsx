@@ -1,6 +1,8 @@
 import * as C from './style';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import {api} from '../../services/api';
+import { TasksContext } from '../../context/tasksContext';
+import { UsersContext } from '../../context/usersContext';
 
 interface userProps{
     name:string;
@@ -8,20 +10,16 @@ interface userProps{
     idAdmin:string;
 }
 
-const UsersList=({name,email,idAdmin}:userProps)=>{
+const UsersList=()=>{
 
-    const [users,setUsers]=useState<userProps[]>([]);
+    const {users}:userProps | any =useContext(UsersContext);
+
     const [showAllUsers,setShowAllUsers]=useState<boolean>(true);
-
-    useEffect(() => {
-        api.get('/users').
-            then((data) => setUsers(data.data));
-            
-    }, []);
 
     return(
         <C.Container>
             <div className='head'>
+            
                 <h3>All User</h3>
                 <button onClick={()=>setShowAllUsers(showAllUsers?false:true)}>Hide</button>
             </div>
@@ -35,7 +33,7 @@ const UsersList=({name,email,idAdmin}:userProps)=>{
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(({name,email},key)=>(
+                        {users.map(({name,email}:userProps,key:number)=>(
                             <tr key={key}>
                                 <td>{name}</td>
                                 <td>{email}</td>

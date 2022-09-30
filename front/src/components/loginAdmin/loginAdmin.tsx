@@ -4,29 +4,48 @@ import { useEffect } from 'react';
 import { api } from '../../services/api';
 import Link from 'next/link';
 
+interface adminsProps{
+    id: string;
+    name:string;
+    email:string;
+    password:string;
+}
+
 const LoginAdmin = () => {
-   const [name,setName]=useState('');
-   const [email,setEmail]= useState('');
-   const [password,setPassword]=useState('');
+    const [email,setEmail]= useState('');
+    const [password,setPassword]=useState('');
+    const [admins,setAdmins]= useState <adminsProps[]>([]);
+    const [admin, setAdmin] = useState<adminsProps>();
+    const [message, setMessage] = useState('');
+
+    useEffect(()=>{
+        api.get('/admins').
+        then((data)=>setAdmins(data.data));
+    },[]);
 
    const hadleValues=()=>{
-        setName('');
+        setAdmin(admins.find((admin)=>admin.email && admin.password===password));
+
+        if(!admin){
+            setMessage('email or password invalid')
+            setInterval(() => {
+                setMessage('');
+            },3000);
+        }else{
+            window.location.replace(`/index/${admin.id}`);
+        }
+
         setPassword('');
         setEmail('');
-        console.log(name);
    }
 
     return (
         <C.AppContainer>
             <div className='register-container'>
                 <h1>Login</h1>
-                <input
-                    type="text"
-                    name="name"
-                    value={name}
-                    placeholder='digite o seu nome'
-                    onChange={(event)=>setName(event.target.value)}
-                />
+                
+                    <p color='red'>{message}</p>
+                
                 <input
                     type="text"
                     name="email"
