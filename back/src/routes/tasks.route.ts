@@ -1,9 +1,8 @@
 import { Router, Request } from 'express';
-import { TaskRepository } from "../repositories/implements/TasksRepository";
-import { createTaskController } from '../services/createTask';
-import { deleteTaskController } from '../services/deleteTask';
-import { getTasksController } from '../services/getTasks';
-import { upDateStatusController } from '../services/upDateTask';
+import { createTaskController } from '../useCases/createTask';
+import { deleteTaskController } from '../useCases/deleteTask';
+import { getTasksController } from '../useCases/getTasks';
+import { upDateStatusController } from '../useCases/upDateTask';
 
 const tasksRoute=Router();
 

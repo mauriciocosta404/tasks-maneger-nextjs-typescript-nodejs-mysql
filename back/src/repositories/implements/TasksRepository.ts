@@ -14,6 +14,7 @@ class TaskRepository implements ITasksRepository{
         this.getTasks();
         return this.tasks;
     }
+
     createTasks({ name, description, status, idUser }: ICreateTaskDTO): void {
         const task=new Task();
 
@@ -27,7 +28,6 @@ class TaskRepository implements ITasksRepository{
         let SQL = 'INSERT INTO tasks(id,name,description,status,idUsers) values(?,?,?,?,?)';
 
         connection.query(SQL, [task.id,task.name, task.description, task.status,task.idUser], (err, result) => {
-            //console.log(err);
             this.getTasks();
         });  
     }
@@ -39,6 +39,7 @@ class TaskRepository implements ITasksRepository{
             this.getTasks();
         });  
     }
+
     deleteTask(idUser: string):string{
         let SQL="DELETE FROM tasks WHERE id=?";
 
@@ -53,7 +54,6 @@ class TaskRepository implements ITasksRepository{
         let SQL = "SELECT * FROM tasks";
 
         connection.query(SQL, (err, result) => {
-            //console.log(result);
             this.tasks = result;
         });
     }

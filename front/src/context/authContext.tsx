@@ -9,7 +9,7 @@ interface AuthContextProps{
     isAutenticated:boolean;
 }
 
-const AuthContext = createContext({} as AuthContextProps);
+const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 
 export function AuthProvider({ children }:PropsWithChildren ){
 

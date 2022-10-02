@@ -9,7 +9,6 @@ class AuthenticateAdminController{
         const {email,password}=request.body;
 
         const token=await this.authenticateAdminUseCase.execute({email,password});
-
         response.json(token);
     }
 }

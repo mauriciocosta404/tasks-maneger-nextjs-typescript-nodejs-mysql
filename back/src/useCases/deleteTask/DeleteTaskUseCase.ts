@@ -5,7 +5,6 @@ class DeleteTaskUseCase{
     constructor(private tasksRepository:ITasksRepository){}
 
     async execute({id}:IDeleteTask){
-        console.log(id);
         const deleteTask = await this.tasksRepository.deleteTask(id);
 
         return deleteTask;

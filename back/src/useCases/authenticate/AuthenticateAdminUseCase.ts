@@ -9,16 +9,15 @@ class AuthenticateAdminUseCase{
     async execute({email,password}:IAuthenticateAdmin){
         const adminAlreadyExists=this.adminRepository.verifyIfExists(email);
     
-        if (!adminAlreadyExists) {
+        if (!adminAlreadyExists || adminAlreadyExists.password!==password) {
             throw new Error("user dont exist");
         }
-        if(adminAlreadyExists.password!==password){
-            throw new Error("user dont exist");
-        }
-            const token = sign({},'08173a01-987e-4e64-bb0f-69ad176e7b1a',{
-                subject:adminAlreadyExists.id.toString(),
-                expiresIn:"10s"
-            });
+
+        const token = sign({},'08173a01-987e-4e64-bb0f-69ad176e7b1a',{
+            subject:adminAlreadyExists.id,
+            expiresIn:"10s"
+        });
+
         return token;
       
     }

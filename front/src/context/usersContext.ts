@@ -3,10 +3,10 @@ import TaskList from '../components/taskList/taskList';
 import { useEffect } from 'react';
 import { api } from '../services/api';
 
-interface usersProps {
+interface UsersProps {
     idUser: number;
     name: string;
     email: string;
 }
 
-export const UsersContext = createContext({} /*as usersProps[]*/);
+export const UsersContext = createContext<UsersProps[]>({} as UsersProps[]);

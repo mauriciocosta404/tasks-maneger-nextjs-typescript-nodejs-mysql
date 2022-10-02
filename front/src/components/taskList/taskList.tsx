@@ -16,21 +16,16 @@ interface tasksProps{
     id:string;
 }
 
-
 const TaskList=()=>{
 
     const {tasks,setTasks}:tasksProps[] | any=useContext(TasksContext);
-    const [showAllTasks, setShowAllTasks] = useState<boolean>(true);
-    const [id, setId] = useState<string>('');
-    const [handleLoad, setHandleLoad] = useState<boolean>(false);
+    const [showAllTasks, setShowAllTasks] = useState(true);
+    const [id, setId] = useState('');
 
     const hadleValues=(id:string,taskStatus:string)=>{
         setId(id);
 
-        let status=
-        taskStatus==='finished'?
-        'unfinished':
-        'finished';
+        let status=taskStatus==='finished'?'unfinished':'finished';
 
         setTasks(tasks?.map((task:tasksProps) => 
             task.id === id
@@ -40,18 +35,15 @@ const TaskList=()=>{
                 }
                 : task
                 ));
-        
+
         api.put('/tasks',{
             id,
             status
-        });
-       
+        });  
     }
 
     const deleteTask=(id:string)=>{
-
         api.delete('/tasks/'+id);
-       
         setTasks(tasks?.filter((task:tasksProps)=>task.id!==id));
     }
 

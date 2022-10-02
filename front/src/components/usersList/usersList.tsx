@@ -12,16 +12,16 @@ interface userProps{
 
 const UsersList=()=>{
 
-    const {users}:userProps | any =useContext(UsersContext);
+    const {users}:userProps[] | any=useContext(UsersContext);
 
-    const [showAllUsers,setShowAllUsers]=useState<boolean>(true);
+    const [showAllUsers,setShowAllUsers]=useState(true);
 
     return(
         <C.Container>
             <div className='head'>
             
                 <h3>All User</h3>
-                <button onClick={()=>setShowAllUsers(showAllUsers?false:true)}>Hide</button>
+                <button onClick={()=>setShowAllUsers(!showAllUsers)}>Hide</button>
             </div>
             {showAllUsers && (
                 <table>

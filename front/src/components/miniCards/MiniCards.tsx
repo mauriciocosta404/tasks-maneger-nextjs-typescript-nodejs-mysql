@@ -16,9 +16,10 @@ interface usersProps {
     name: string;
     email: string;
 }
+
 const MiniCards=()=>{
-    const {tasks}:tasksProps | any=useContext(TasksContext);
-    const {users}:usersProps | any =useContext(UsersContext);
+    const {tasks}:tasksProps[] | any =useContext(TasksContext);
+    const {users}:usersProps[] | any =useContext(UsersContext);
     const [countUsers,setCountUsers]=useState(0);
     const [countTasks,setCountTasks]=useState(0);
     const [peddingCountTasks, setPeddingCountTasks] = useState<tasksProps[]>();
@@ -26,9 +27,9 @@ const MiniCards=()=>{
     
     useEffect(()=>{
         setCountUsers(users.length)
-                setCountTasks(tasks.length),
-                setPeddingCountTasks(tasks.filter((task: tasksProps) => task.status === 'unfinished'));
-                setFinishedCountTasks(tasks.filter((task: tasksProps) => task.status === 'finished'));
+        setCountTasks(tasks.length),
+        setPeddingCountTasks(tasks.filter((task: tasksProps) => task.status === 'unfinished'));
+        setFinishedCountTasks(tasks.filter((task: tasksProps) => task.status === 'finished'));
         
     },[users,tasks]);
 

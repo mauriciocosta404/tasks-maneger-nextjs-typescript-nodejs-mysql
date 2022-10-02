@@ -1,11 +1,12 @@
 import type { AppProps } from 'next/app';
-import { useEffect, useState } from 'react';
+import { ContextType, useEffect, useState } from 'react';
 import MainContainer from '../src/components/mainContentainer/MainContainer';
 import { AuthProvider } from '../src/context/authContext';
 import { TasksContext } from '../src/context/tasksContext';
 import { UsersContext } from '../src/context/usersContext';
 import { api } from '../src/services/api';
 import { GlobalStyle } from '../styles/Global';
+import {GetServerSideProps} from 'next';
 
 interface usersProps {
   id: string;
@@ -22,6 +23,7 @@ interface tasksProps {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+
   const [users, setUsers] = useState<usersProps[]>([]);
   const [tasks, setTasks] = useState<tasksProps[]>([]);
 
@@ -47,4 +49,5 @@ function MyApp({ Component, pageProps }: AppProps) {
     
   </>)
 }
-export default MyApp
+export default MyApp;
+

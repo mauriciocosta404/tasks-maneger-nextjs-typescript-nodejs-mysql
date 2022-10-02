@@ -22,10 +22,9 @@ class AdminRepository implements IAdminRepository{
         return this.admins;
     }
 
-    verifyIfExists(email: string): Admin {
+    verifyIfExists(email: string): Admin | undefined {
 
         const adminExists= this.admins.find((admin)=>admin.email===email);
-
         return adminExists;
     }
 

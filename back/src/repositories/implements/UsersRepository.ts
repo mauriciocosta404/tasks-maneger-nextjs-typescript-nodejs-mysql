@@ -11,8 +11,8 @@ class UsersRepository implements IUsersRepository{
     }
 
     findByEmail(email: string): boolean {
-        const verifyIfExists=this.users.some((user)=>user.email===email);
 
+        const verifyIfExists=this.users?.some((user)=>user.email===email);
         return verifyIfExists;
     }
     
@@ -28,7 +28,6 @@ class UsersRepository implements IUsersRepository{
         let SQL='INSERT INTO users(id,name,email) values(?,?,?)';
 
         connection.query(SQL,[user.id,user.name,user.email,/*user.idAdmin*/],(err,result)=>{
-            //console.log(err);
             this.getUsers();
         });
     }

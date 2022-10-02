@@ -3,7 +3,7 @@ import Head from 'next/head'
 import * as C from './style';
 import Aside from '../../src/components/aside/aside'
 import Header from '../../src/components/header/header'
-import MiniCards from '../../src/components/miniCards/MiniCards';
+
 import AddTask from '../../src/components/addTasks/addTasks';
 
 const AddTasksPage: NextPage = () => {
@@ -16,12 +16,9 @@ const AddTasksPage: NextPage = () => {
                 </title>
             </Head>
             <C.Container>
-                <Aside></Aside>
-                <div className='header'>
-                    <Header></Header>
-                   <AddTask></AddTask>
-                </div>
 
+                   <AddTask></AddTask>
+            
             </C.Container>
         </>
     )

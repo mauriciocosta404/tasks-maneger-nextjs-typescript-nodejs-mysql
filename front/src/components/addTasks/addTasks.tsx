@@ -8,24 +8,14 @@ import PickUser from '../pickUser/pickUser';
 const AddTask = () => {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
-    const [idUser,setIdUser]=useState<number>(-1);
     const [status, setStatus] = useState('unfinished');
     const [showPickUser, setShowPickUser] = useState(false);
-
-    const hadleValues = () => {
-        //console.log(idUser);
-        /*
-        setName('');
-        setDescription('');
-        setStatus('');
-        setIdUser(-1);*/
-    }
-
+    
     return (
         <>
             {
                 showPickUser &&
-                (<PickUser name={name} description={description} status={status} handleValues={hadleValues} setShowPickUser={setShowPickUser}/>)
+                (<PickUser name={name} description={description} status={status} setShowPickUser={setShowPickUser}/>)
             }
             <C.AppContainer>
                 <div className='register-container'>

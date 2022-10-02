@@ -1,6 +1,7 @@
 import * as C from './style';
 import { api } from '../../services/api';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UsersContext } from '../../context/usersContext';
 
 interface userProps {
     name: string;
@@ -11,21 +12,14 @@ interface userProps {
 
 interface PickUserProps{    
     setShowPickUser(showPickUser:boolean):void;
-    handleValues():void;
     name: string;
     description:string;
     status:string;
 }
 
-const PickUser=({name,description,status,setShowPickUser,handleValues}:PickUserProps)=>{
+const PickUser=({name,description,status,setShowPickUser}:PickUserProps)=>{
 
-    const [users,setUsers]=useState<userProps[]>([]);
-
-
-    useEffect(() => {
-        api.get('/users').
-            then((data) => setUsers(data.data));
-    }, []);
+    const {users,setUsers}:userProps[] | any=useContext(UsersContext);
 
     const handle=(idUser:number)=>{
         api.post('/Tasks', {
@@ -34,15 +28,16 @@ const PickUser=({name,description,status,setShowPickUser,handleValues}:PickUserP
             status,
             idUser
         });
-            setShowPickUser(false);
-            handleValues();
-        }
+        
+        setShowPickUser(false);
+        window.location.replace('/index');
+    }
 
     return(
         <C.Container>
             <C.UsersContainer>
                 {
-                    users.map(({name,email,id},key)=>(
+                    users.map(({name,email,id}:userProps,key:number)=>(
                         <div key={key} onClick={()=>handle(id)}>
                             <div className='initial'>
                                 {name.charAt(0)}

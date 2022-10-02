@@ -1,8 +1,6 @@
 import * as C from './style';
 import React, { useState } from 'react';
-import { useEffect } from 'react';
 import { api } from '../../services/api';
-import Link from 'next/link';
 
 const AddUsers = () => {
    const [name,setName]=useState('');
@@ -18,6 +16,7 @@ const AddUsers = () => {
         setName('');
         setIdAdmin('');
         setEmail('');
+        window.location.replace('/usersList');
    }
 
     return (

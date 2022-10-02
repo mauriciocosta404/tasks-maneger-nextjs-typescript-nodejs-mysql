@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AppContainer = styled.div`
     background-color: #fff;
     position: absolute;
-    top: 50%;left:61%;
+    top: 50%;left:50%;
     transform: translate(-50%,-50%);
     >div{
         display: flex;
